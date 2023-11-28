@@ -12,7 +12,13 @@ public class BinarySearchTreeTest {
         tree.insert(new Node(4));
         tree.insert(new Node(8));
 
+        tree.remove(1);
+        tree.remove(5);
         tree.display();
+
+        System.out.println(tree.search(0));
+        System.out.println(tree.search(1));
+        tree.remove(0);
         
     }
 }
