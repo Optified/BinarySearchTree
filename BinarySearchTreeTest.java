@@ -67,7 +67,10 @@ public class BinarySearchTreeTest {
             case "s": if(test == -1){
                 System.out.println("The phonebook is empty. There are no contacts to search.");
             }
-            //tree.search(); placeholder
+            System.out.println("Input UID for search:");
+            intChoice = input.nextInt();
+            tree.search(intChoice);
+            break;
 
             case "Q": //quit
             case "q": test = -2;
@@ -84,6 +87,7 @@ public class BinarySearchTreeTest {
         System.out.println("D: Delete a contact from the phonebook");
         System.out.println("E: Edit a contact from the phonebook");
         System.out.println("P: Print the current contacts within the phonebook");
+        System.out.println("S: Search for a specific member by the UID.");
         System.out.println("Q: Quit from viewing the phonebook");
     }
 }

@@ -91,13 +91,14 @@ public class BinarySearchTree {
         if(root == null){ //cant search anything if tree is empty
             return false;
         }
-        else if(root.key == key){ //if our search is our root
+        else if(root.key == key){ //if a search is found
+            System.out.println(root.toString());
             return true;
         }
-        else if(root.key > key){ //if data is greater than the data, it'll search on the right 
+        else if(root.key > key){ //if root is greater than the key, it'll search on the left
             return searchHelper(root.left, key);
         }
-        else{
+        else{ //if key is greater than the key, then it'll go right.
             return searchHelper(root.right, key);
         }
     }
