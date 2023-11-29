@@ -1,18 +1,41 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 
 
 public class BinarySearchTree {
     Node root;
+    //ArrayList<Integer> numbers = new ArrayList<>();
 
-    public void insert(){ //calls a recursive method that adds 
+
+
+    public void insert(){ //asks user for data, and then recursively adds it into the binary search tree
 
         Scanner hello = new Scanner(System.in);
         String input;
 
         System.out.println("Please input a UNIQUE POSITIVE number that you have not inputted before: ");
         input = hello.next();
+        int num = Integer.parseInt(input);
+ /*        numbers.add(0);
+        boolean isUnique = false;
 
-        Node node = new Node(Integer.parseInt(input));
+        while(isUnique == false){
+            int numberTest = 0;
+            if(num == numbers.get(numberTest) || num < 0){
+                System.out.println("You just input either a non unique, or non positive number. Please try again.");
+                input = hello.next();
+                num = Integer.parseInt(input);
+            }
+            else if(numberTest == numbers.size()){
+                isUnique = true;
+            }
+            else{
+                numberTest++;
+            }
+        }
+
+        numbers.add(num);*/
+        Node node = new Node(num);
 
         System.out.println("Please input a First Name:");
         input = hello.next();
@@ -34,9 +57,8 @@ public class BinarySearchTree {
         input = hello.next();
         node.setAddress(input);
 
-
-
         root = insertHelper(root, node); 
+
     }
     private Node insertHelper(Node root, Node node){
         int key = node.key;
