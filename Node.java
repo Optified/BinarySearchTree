@@ -4,13 +4,13 @@ public class Node {
     private String city;
     private String number;
     private String address;*/
-    int data;
+    int key;
     Node left;
     Node right;
 
 
-    public Node(int data){
-        this.data = data;
+    public Node(int key){
+        this.key = key;
         
     }
 }

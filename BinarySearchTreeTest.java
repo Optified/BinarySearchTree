@@ -1,6 +1,7 @@
 public class BinarySearchTreeTest {
     public static void main(String[] args){
         BinarySearchTree tree = new BinarySearchTree();
+        //create a modify node
 
         tree.insert(new Node(5));
         tree.insert(new Node(1));

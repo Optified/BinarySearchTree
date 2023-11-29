@@ -1,16 +1,16 @@
 public class BinarySearchTree {
     Node root;
 
-    public void insert(Node node){
-        root = insertHelper(root, node);
+    public void insert(Node node){ //calls a recursive method that adds 
+        root = insertHelper(root, node); 
     }
     private Node insertHelper(Node root, Node node){
-        int data = node.data;
+        int key = node.key;
         if(root == null){
             root = node;
             return root;
         }
-        else if(data < root.data){
+        else if(key < root.key){
             root.left = insertHelper(root.left, node);
         }
         else{
@@ -24,56 +24,56 @@ public class BinarySearchTree {
     private void displayHelper(Node root){ //inorder traversal
         if(root != null){
             displayHelper(root.left); //displays left side, which is less than the right side
-            System.out.println(root.data);
+            System.out.println(root.key);
             displayHelper(root.right);
         }
     }
-    public boolean search(int data){
-        return searchHelper(root, data);
+    public boolean search(int key){
+        return searchHelper(root, key);
     }
-    private boolean searchHelper(Node root, int data){
+    private boolean searchHelper(Node root, int key){
         if(root == null){ //cant search anything if tree is empty
             return false;
         }
-        else if(root.data == data){ //if our search is our root
+        else if(root.key == key){ //if our search is our root
             return true;
         }
-        else if(root.data > data){ //if data is greater than the data, it'll search on the right 
-            return searchHelper(root.left, data);
+        else if(root.key > key){ //if data is greater than the data, it'll search on the right 
+            return searchHelper(root.left, key);
         }
         else{
-            return searchHelper(root.right, data);
+            return searchHelper(root.right, key);
         }
     }
-    public void remove(int data){
-        if(search(data)){
-            removeHelper(root, data);
+    public void remove(int key){
+        if(search(key) == true){
+            removeHelper(root, key);
         }
-        else{
-            System.out.println(data + " could not be found");
+        else{ //if data is false
+            System.out.println(key + " could not be found");
         }
     }
-    public Node removeHelper(Node root, int data){
+    public Node removeHelper(Node root, int key){
         if(root == null){
             return root;
         }
-        else if(data < root.data){
-            root.left = removeHelper(root.left, data);
+        else if(key < root.key){
+            root.left = removeHelper(root.left, key);
         }
-        else if(data > root.data){
-            root.right = removeHelper(root.right, data);
+        else if(key > root.key){
+            root.right = removeHelper(root.right, key);
         }
         else{
             if(root.left == null && root.right == null){ //if the node is a leaf (no left or right child)
                 root = null;
             }
             else if(root.right != null){ //the right node will be removed
-                root.data = successor(root);
-                root.right = removeHelper(root.right, root.data);
+                root.key = successor(root);
+                root.right = removeHelper(root.right, root.key);
             }
             else{
-                root.data = predecessor(root);
-                root.left = removeHelper(root.left, root.data);
+                root.key = predecessor(root);
+                root.left = removeHelper(root.left, root.key);
             }
         }
         return root;
@@ -83,14 +83,14 @@ public class BinarySearchTree {
         while(root.left != null){
             root = root.left;
         }
-        return root.data;
+        return root.key;
     }
     private int predecessor(Node root){
         root = root.left;
         while(root.right != null){
             root = root.right;
         }
-        return root.data;
+        return root.key;
     }
 
 }
