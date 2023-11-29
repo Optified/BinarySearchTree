@@ -1,7 +1,41 @@
+import java.util.Scanner;
+
+
 public class BinarySearchTree {
     Node root;
 
-    public void insert(Node node){ //calls a recursive method that adds 
+    public void insert(){ //calls a recursive method that adds 
+
+        Scanner hello = new Scanner(System.in);
+        String input;
+
+        System.out.println("Please input a UNIQUE POSITIVE number that you have not inputted before: ");
+        input = hello.next();
+
+        Node node = new Node(Integer.parseInt(input));
+
+        System.out.println("Please input a First Name:");
+        input = hello.next();
+        node.setFirstName(input);
+        
+        System.out.println("Please input a Last Name:");
+        input = hello.next();
+        node.setLastName(input);
+
+        System.out.println("Please enter a City:");
+        input = hello.next();
+        node.setCity(input);
+
+        System.out.println("Please enter a Number:");
+        input = hello.next();
+        node.setNumber(input);
+
+        System.out.println("Please enter an Address:");
+        input = hello.next();
+        node.setAddress(input);
+
+
+
         root = insertHelper(root, node); 
     }
     private Node insertHelper(Node root, Node node){
@@ -46,7 +80,7 @@ public class BinarySearchTree {
         }
     }
     public void remove(int key){
-        if(search(key) == true){
+        if(search(key)){
             removeHelper(root, key);
         }
         else{ //if data is false
