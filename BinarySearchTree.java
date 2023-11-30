@@ -74,14 +74,39 @@ public class BinarySearchTree {
         }
         return root;
     }
-    public void display(){
-        displayHelper(root);
+    public void display(int input){
+        if(input == 1){
+            displayHelperInOrder(root);
+        }
+        else if(input == 2){
+            displayHelperPostOrder(root);
+        }
+        else if(input == 3){
+            displayHelperPreOrder(root);
+        }
+        else{
+            System.out.println("An error as occured. There was a chance that you entered an invalid input. Please try again.");
+        }
     }
-    private void displayHelper(Node root){ //inorder traversal
+    private void displayHelperInOrder(Node root){ //inorder traversal
         if(root != null){
-            displayHelper(root.left); //displays left side, which is less than the right side
+            displayHelperInOrder(root.left); //displays left side, which is less than the right side
             System.out.println(root.key);
-            displayHelper(root.right);
+            displayHelperInOrder(root.right);
+        }
+    }
+    private void displayHelperPostOrder(Node root){
+        if(root != null){
+            displayHelperPostOrder(root.left);
+            displayHelperPostOrder(root.right);
+            System.out.println(root.key);
+        }
+    }
+    private void displayHelperPreOrder(Node root){
+        if(root != null){
+            System.out.println(root.key);
+            displayHelperPreOrder(root.left);
+            displayHelperPreOrder(root.right);
         }
     }
     public boolean search(int key){

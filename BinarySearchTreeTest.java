@@ -2,8 +2,8 @@ import java.util.Scanner;
 
 public class BinarySearchTreeTest {
     public static void main(String[] args){
-        BinarySearchTree tree = new BinarySearchTree();
-        boolean isDone = false;
+        BinarySearchTree tree = new BinarySearchTree(); //creates a binary tree object
+        boolean isDone = false; //menu continues going if false.
         int i = -1;
 
         do{
@@ -15,22 +15,22 @@ public class BinarySearchTreeTest {
 
         }while(isDone == false); 
     }
-    public static int choice(int i, BinarySearchTree tree){
+    public static int choice(int i, BinarySearchTree tree){ //starts the menu, and takes the binary search tree and returns an object to know whn to stop the menu
         int test = i;
-        Scanner input = new Scanner(System.in);
+        Scanner input = new Scanner(System.in); //
         String choice = input.next();
         choice = choice.toLowerCase();
 
         int intChoice;
 
-        switch(choice){
-            case "A": //add
+        switch(choice){ //the switch for the menu
+            case "A": //adds a assigns a UID with credentials to the search tree
             case "a": tree.insert();
-            test = 0;
+            test = 0; //allows for delete, edit, print, and search to work if add has been issued at least once
             break;
 
-            case "D": //delete
-            case "d": if(test == -1){
+            case "D": //deletes
+            case "d": if(test == -1){ //will only delete if something has been added first
                 System.out.println("The search is empty. There are no contacts to delete.");
             }
             else{
@@ -41,7 +41,7 @@ public class BinarySearchTreeTest {
             break;
 
             case "E": //edit
-            case "e": if(test == -1){
+            case "e": if(test == -1){ //will only edit
                 System.out.println("The search is empty. There are no contacts to edit.");
             }
             else{
@@ -60,7 +60,9 @@ public class BinarySearchTreeTest {
             case "p": if(test == -1){
                 System.out.println("The search is empty. There are no contacts to print.");
             }
-            tree.display();
+            System.out.println("Which of the search methods would you like to use?\n1: In order\n2: Post order\n3: Pre order");
+            intChoice = input.nextInt();
+            tree.display(intChoice);
             break;
 
             case "S":
