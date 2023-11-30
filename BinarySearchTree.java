@@ -102,6 +102,41 @@ public class BinarySearchTree {
             return searchHelper(root.right, key);
         }
     }
+    public void modify(int key, int changeNum, String change){ //Takes the key, and recursively finds the key, and changes
+        root = modifyHelper(root, key, changeNum, change);
+    }
+    private Node modifyHelper(Node root, int key, int changeNum, String change){
+        if(root == null){
+            return null;
+        }
+
+        if(key < root.key){ //will take the left nod eif the key being search is less than the key value of the root
+            root.left = modifyHelper(root.left, key, changeNum, change);
+        }
+        else if(key > root.key){ //will take the right node if the key being searched for is greater than the key value of the root
+            root.right = modifyHelper(root.right, key, changeNum, change);
+        }
+        else{ //root is found. will run a switch case to decide which part of data should be changed
+            switch(changeNum){
+                case 1: root.setFirstName(change);
+                break;
+
+                case 2: root.setFirstName(change);
+                break;
+
+                case 3: root.setFirstName(change);
+                break;
+
+                case 4: root.setFirstName(change);
+                break;
+
+                case 5: root.setFirstName(change);
+                break;
+            }
+        }
+        return root;
+    }
+
     public void remove(int key){
         if(search(key)){
             removeHelper(root, key);

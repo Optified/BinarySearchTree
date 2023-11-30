@@ -3,16 +3,6 @@ import java.util.Scanner;
 public class BinarySearchTreeTest {
     public static void main(String[] args){
         BinarySearchTree tree = new BinarySearchTree();
-        /*tree.insert();
-        tree.insert();
-        tree.insert();
-        tree.insert();
-
-        tree.display();
-        System.out.print("hello");
-        tree.remove(1);
-        tree.remove(0);
-        System.out.println(tree.search(1));*/
         boolean isDone = false;
         int i = -1;
 
@@ -41,7 +31,7 @@ public class BinarySearchTreeTest {
 
             case "D": //delete
             case "d": if(test == -1){
-                System.out.println("The phonebook is empty. There are no contacts to delete.");
+                System.out.println("The search is empty. There are no contacts to delete.");
             }
             else{
                 System.out.println("Which entry would you like to delete?");
@@ -52,20 +42,30 @@ public class BinarySearchTreeTest {
 
             case "E": //edit
             case "e": if(test == -1){
-                System.out.println("The phonebook is empty. There are no contacts to edit.");
+                System.out.println("The search is empty. There are no contacts to edit.");
+            }
+            else{
+                System.out.println("Input the UID in which you would like to edit: ");
+                intChoice = input.nextInt();
+                System.out.println("Please input which field you want to edit:\n1: First name\n2: Last name\n3: City\n4: Number: \n5: Address\n6: Quit");
+                int choiceTwo = input.nextInt();
+
+                System.out.println("What is your input into this contact");
+                choice = input.next();
+                tree.modify(intChoice, choiceTwo, choice);
             }
             break;
 
             case "P": //print
             case "p": if(test == -1){
-                System.out.println("The phonebook is empty. There are no contacts to print.");
+                System.out.println("The search is empty. There are no contacts to print.");
             }
             tree.display();
             break;
 
             case "S":
             case "s": if(test == -1){
-                System.out.println("The phonebook is empty. There are no contacts to search.");
+                System.out.println("The search is empty. There are no contacts to search.");
             }
             System.out.println("Input UID for search:");
             intChoice = input.nextInt();
@@ -82,12 +82,12 @@ public class BinarySearchTreeTest {
         return test;
     }
     public static void printIntro(){
-        System.out.println("What would you like to do?\nInput the following commands to interact with the phonebook.\n");
-        System.out.println("A: Add a contact to the phonebook");
-        System.out.println("D: Delete a contact from the phonebook");
-        System.out.println("E: Edit a contact from the phonebook");
-        System.out.println("P: Print the current contacts within the phonebook");
-        System.out.println("S: Search for a specific member by the UID.");
-        System.out.println("Q: Quit from viewing the phonebook");
+        System.out.println("What would you like to do?\nInput the following commands to interact with the database.\n");
+        System.out.println("A: Add a user to the database");
+        System.out.println("D: Delete a contact from the database");
+        System.out.println("E: Edit a contact from the database");
+        System.out.println("P: Print the UIDs of all users within the database");
+        System.out.println("S: Search for a specific user by their UID.");
+        System.out.println("Q: Quit from viewing the database");
     }
 }
