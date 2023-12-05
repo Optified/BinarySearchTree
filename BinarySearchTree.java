@@ -16,25 +16,6 @@ public class BinarySearchTree {
         System.out.println("Please input a UNIQUE POSITIVE number that you have not inputted before: ");
         input = hello.next();
         int num = Integer.parseInt(input);
- /*        numbers.add(0);
-        boolean isUnique = false;
-
-        while(isUnique == false){
-            int numberTest = 0;
-            if(num == numbers.get(numberTest) || num < 0){
-                System.out.println("You just input either a non unique, or non positive number. Please try again.");
-                input = hello.next();
-                num = Integer.parseInt(input);
-            }
-            else if(numberTest == numbers.size()){
-                isUnique = true;
-            }
-            else{
-                numberTest++;
-            }
-        }
-
-        numbers.add(num);*/
         Node node = new Node(num);
 
         System.out.println("Please input a First Name:");
@@ -60,7 +41,7 @@ public class BinarySearchTree {
         root = insertHelper(root, node); 
 
     }
-    private Node insertHelper(Node root, Node node){
+    private Node insertHelper(Node root, Node node){ //recursively goes through and inserts the node in the respective spot
         int key = node.key;
         if(root == null){
             root = node;
@@ -74,7 +55,7 @@ public class BinarySearchTree {
         }
         return root;
     }
-    public void display(int input){
+    public void display(int input){ //decides which display method to run
         if(input == 1){
             displayHelperInOrder(root);
         }
@@ -95,24 +76,24 @@ public class BinarySearchTree {
             displayHelperInOrder(root.right);
         }
     }
-    private void displayHelperPostOrder(Node root){
+    private void displayHelperPostOrder(Node root){ //postorder traversal
         if(root != null){
             displayHelperPostOrder(root.left);
             displayHelperPostOrder(root.right);
             System.out.println(root.key);
         }
     }
-    private void displayHelperPreOrder(Node root){
+    private void displayHelperPreOrder(Node root){ //preorder traversal
         if(root != null){
             System.out.println(root.key);
             displayHelperPreOrder(root.left);
             displayHelperPreOrder(root.right);
         }
     }
-    public boolean search(int key){
+    public boolean search(int key){ //search the code
         return searchHelper(root, key);
     }
-    private boolean searchHelper(Node root, int key){
+    private boolean searchHelper(Node root, int key){ //runs recursively to find the sorted tree for the code that goes up
         if(root == null){ //cant search anything if tree is empty
             return false;
         }
@@ -162,7 +143,7 @@ public class BinarySearchTree {
         return root;
     }
 
-    public void remove(int key){
+    public void remove(int key){ //
         if(search(key)){
             removeHelper(root, key);
         }
